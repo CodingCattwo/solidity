@@ -22,6 +22,7 @@
 #include <libyul/optimiser/ASTWalker.h>
 #include <libyul/YulString.h>
 #include <libyul/optimiser/OptimiserStep.h>
+#include <libyul/optimiser/NameDispenser.h>
 
 #include <map>
 #include <set>
@@ -47,7 +48,10 @@ public:
 	static constexpr char const* name{"NameSimplifier"};
 	static void run(OptimiserStepContext& _context, Block& _ast)
 	{
-		NameSimplifier{_context, _ast}(_ast);
+		NameSimplifier nameSimplifier{_context, _ast};
+		nameSimplifier(_ast);
+		for (auto const& names: nameSimplifier.m_translations)
+			nameSimplifier.m_context.dispenser.markUsed(names.second);
 	}
 
 	using ASTModifier::operator();

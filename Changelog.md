@@ -12,6 +12,7 @@ Compiler Features:
 
 Bugfixes:
  * SMTChecker: Fix internal compiler error when doing bitwise compound assignment with string literals.
+ * Optimizer: Fix a bug in NameSimplifier where a new name created by NameSimplifier could also be created by NameDispenser.
 
 ### 0.7.5 (2020-11-18)
 
