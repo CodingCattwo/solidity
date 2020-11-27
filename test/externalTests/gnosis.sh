@@ -35,7 +35,6 @@ function gnosis_safe_test
 
     truffle_setup https://github.com/cameel/safe-contracts.git external-test-fixes
 
-    force_truffle_version
     sed -i 's|github:gnosis/mock-contract#sol_0_5_0|github:solidity-external-tests/mock-contract#master_070|g' package.json
     rm -f package-lock.json
     rm -rf node_modules/
